@@ -26,7 +26,7 @@ function Dashboard({ medicines, vitals, alerts, setActiveTab }) {
   return (
     <div className="dashboard">
       <div className="welcome-section">
-        <h2>Good {getTimeOfDay()}! 👋</h2>
+        <h2>Good {getTimeOfDay()}!👋</h2>
         <p className="date-display">{format(new Date(), 'EEEE, MMMM do, yyyy')}</p>
       </div>
 

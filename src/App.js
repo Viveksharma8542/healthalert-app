@@ -5,6 +5,7 @@ import CaretakerAlerts from './components/CaretakerAlerts';
 import HealthVitals from './components/HealthVitals';
 import EmergencyContacts from './components/EmergencyContacts';
 import Dashboard from './components/Dashboard';
+import LoginRegisterPage from './components/LoginRegisterPage';
 import './App.css';
 
 function App() {
@@ -109,8 +110,8 @@ function App() {
           {format(new Date(), 'EEEE, MMMM do, yyyy - h:mm a')}
         </div>
         <div style={{marginTop:'0.75rem', display:'flex', gap:'0.75rem', justifyContent:'center', flexWrap:'wrap'}}>
-          <span style={{color:'#fff', fontSize:'0.9rem'}}>👤 {user.name}</span>
-          <button onClick={handleLogout} style={{background:'#e74c3c', color:'#fff', border:'none', padding:'0.5rem 1rem', borderRadius:'6px', cursor:'pointer', fontWeight:600}}>Logout</button>
+          <span style={{color:'#fff', fontSize:'1.2rem'}}>👤 {user.name}</span>
+          <button onClick={handleLogout} style={{background:'#e74c3c', color:'#fff', border:'none', padding:'0.5rem 1rem', borderRadius:'6px', cursor:'pointer', fontWeight:900}}>Logout</button>
         </div>
       </header>
       <nav className="tab-navigation">

@@ -50,8 +50,8 @@ function HealthVitals({ vitals, setVitals }) {
         return 'normal';
       case 'temperature':
         const temp = parseFloat(value);
-        if (temp > 99.5) return 'high';
-        if (temp < 97.0) return 'low';
+        if (temp > 37.5) return 'high';
+        if (temp < 36.0) return 'low';
         return 'normal';
       default:
         return 'normal';
@@ -105,7 +105,7 @@ function HealthVitals({ vitals, setVitals }) {
           <div className="summary-card">
             <h3>🌡️ Temperature</h3>
             <p className="value">
-              {vitals[0]?.temperature ? `${vitals[0].temperature}°F` : 'Not recorded'}
+              {vitals[0]?.temperature ? `${vitals[0].temperature}°C` : 'Not recorded'}
             </p>
             <p className="date">
               {vitals[0] ? format(new Date(vitals[0].timestamp), 'MMM dd, h:mm a') : ''}
@@ -115,7 +115,7 @@ function HealthVitals({ vitals, setVitals }) {
           <div className="summary-card">
             <h3>⚖️ Weight</h3>
             <p className="value">
-              {vitals[0]?.weight ? `${vitals[0].weight} lbs` : 'Not recorded'}
+              {vitals[0]?.weight ? `${vitals[0].weight} kg` : 'Not recorded'}
             </p>
             <p className="date">
               {vitals[0] ? format(new Date(vitals[0].timestamp), 'MMM dd, h:mm a') : ''}
@@ -164,7 +164,7 @@ function HealthVitals({ vitals, setVitals }) {
                       <span className="measurement-label">Temperature:</span>
                       <span className="measurement-value">
                         {getStatusIcon(getVitalStatus('temperature', vital.temperature))}
-                        {vital.temperature}°F
+                        {vital.temperature}°C
                       </span>
                     </div>
                   )}
@@ -172,7 +172,7 @@ function HealthVitals({ vitals, setVitals }) {
                     <div className="measurement">
                       <span className="measurement-label">Weight:</span>
                       <span className="measurement-value">
-                        {vital.weight} lbs
+                        {vital.weight} kg
                       </span>
                     </div>
                   )}
@@ -249,23 +249,23 @@ function HealthVitals({ vitals, setVitals }) {
               </div>
 
               <div className="form-group">
-                <label>Temperature (°F)</label>
+                <label>Temperature (°C)</label>
                 <input
                   type="number"
                   step="0.1"
                   value={newVital.temperature}
                   onChange={(e) => setNewVital({...newVital, temperature: e.target.value})}
-                  placeholder="e.g., 98.6"
+                  placeholder="e.g., 37.0"
                 />
               </div>
 
               <div className="form-group">
-                <label>Weight (lbs)</label>
+                <label>Weight (kg)</label>
                 <input
                   type="number"
                   value={newVital.weight}
                   onChange={(e) => setNewVital({...newVital, weight: e.target.value})}
-                  placeholder="e.g., 150"
+                  placeholder="e.g., 70"
                 />
               </div>
 

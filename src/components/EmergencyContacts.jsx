@@ -63,10 +63,10 @@ function EmergencyContacts({ contacts, setContacts }) {
       <div className="emergency-banner">
         <h3>🚨 In Case of Emergency</h3>
         <div className="emergency-actions">
-          <button className="emergency-call-button" onClick={() => handleCall('911')}>
-            📞 Call 911
+          <button className="emergency-call-button" onClick={() => handleCall('112')}>
+            📞 Call 112
           </button>
-          <p>For life-threatening emergencies, call 911 immediately</p>
+          <p>For life-threatening emergencies, call 112 immediately</p>
         </div>
       </div>
 
@@ -124,6 +124,9 @@ function EmergencyContacts({ contacts, setContacts }) {
           <li>Keep important medical information easily accessible</li>
           <li>Consider wearing a medical alert bracelet or necklace</li>
           <li>Let neighbors know about your medical conditions if comfortable</li>
+          <li>Know the location of nearest government hospital or primary health center</li>
+          <li>Keep emergency numbers saved: Police (100), Fire (101), Ambulance (108), National Emergency (112)</li>
+          <li>Have your Aadhaar card and insurance documents easily accessible</li>
         </ul>
       </div>
 
@@ -156,7 +159,7 @@ function EmergencyContacts({ contacts, setContacts }) {
                   type="tel"
                   value={newContact.phone}
                   onChange={(e) => setNewContact({...newContact, phone: e.target.value})}
-                  placeholder="555-123-4567"
+                  placeholder="+91-98765-43210"
                 />
               </div>
 

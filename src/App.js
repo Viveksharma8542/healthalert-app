@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { format, isToday} from 'date-fns';                    //isPast, addMinutes
+import { format, isToday } from 'date-fns';                    //isPast, addMinutes
 import MedicineReminders from './components/MedicineReminders';
 import CaretakerAlerts from './components/CaretakerAlerts';
 import HealthVitals from './components/HealthVitals';
@@ -82,13 +82,12 @@ function App() {
 
   return (
     <div className="app">
-      <header className="app-header">                 
+      <header className="app-header">
         <h1>Senior Care Assistant</h1>
         <div className="current-time">
           {format(new Date(), 'EEEE, MMMM do, yyyy - h:mm a')}
         </div>
       </header>
-
       <nav className="tab-navigation">
         {tabs.map(tab => (
           <button
@@ -104,7 +103,7 @@ function App() {
 
       <main className="app-content">
         {activeTab === 'dashboard' && (
-          <Dashboard 
+          <Dashboard
             medicines={medicines}
             vitals={vitals}
             alerts={alerts}
@@ -112,26 +111,26 @@ function App() {
           />
         )}
         {activeTab === 'medicine' && (
-          <MedicineReminders 
+          <MedicineReminders
             medicines={medicines}
             setMedicines={setMedicines}
           />
         )}
         {activeTab === 'vitals' && (
-          <HealthVitals 
+          <HealthVitals
             vitals={vitals}
             setVitals={setVitals}
           />
         )}
         {activeTab === 'caretaker' && (
-          <CaretakerAlerts 
+          <CaretakerAlerts
             alerts={alerts}
             setAlerts={setAlerts}
             emergencyContacts={emergencyContacts}
           />
         )}
         {activeTab === 'emergency' && (
-          <EmergencyContacts 
+          <EmergencyContacts
             contacts={emergencyContacts}
             setContacts={setEmergencyContacts}
           />
@@ -149,13 +148,13 @@ function App() {
               </div>
             ))}
             <div className="alert-actions">
-              <button 
+              <button
                 className="alert-button taken"
                 onClick={() => setAlerts([])}
               >
                 ✅ Taken
               </button>
-              <button 
+              <button
                 className="alert-button snooze"
                 onClick={() => {
                   // Snooze for 10 minutes

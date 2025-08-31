@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff, User, Mail, Lock, ArrowRight } from 'lucide-react';
 
-/*
-  Simple auth placeholder (no backend):
-  - Registration stores user creds in localStorage under key 'appUser'
-  - Login validates against stored creds
-  - Password stored in plain text ONLY for demo (do NOT use in production)
-  - onAuth callback receives { name, email }
-*/
+
 const LoginRegisterPage = ({ onAuth }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { format, isToday } from 'date-fns';                    //isPast, addMinutes
+import { format, isToday} from 'date-fns';                    //isPast, addMinutes
 import MedicineReminders from './components/MedicineReminders';
 import CaretakerAlerts from './components/CaretakerAlerts';
 import HealthVitals from './components/HealthVitals';
@@ -8,6 +8,20 @@ import Dashboard from './components/Dashboard';
 import './App.css';
 
 function App() {
+  const [user, setUser] = useState(() => {
+    const stored = localStorage.getItem('currentUser');
+    return stored ? JSON.parse(stored) : null;
+  });
+
+  const handleAuth = (u) => {
+    setUser(u);
+    localStorage.setItem('currentUser', JSON.stringify(u));
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('currentUser');
+  };
   const [activeTab, setActiveTab] = useState('dashboard');
   const [medicines, setMedicines] = useState(() => {
     const saved = localStorage.getItem('medicines');
@@ -20,8 +34,11 @@ function App() {
   const [emergencyContacts, setEmergencyContacts] = useState(() => {
     const saved = localStorage.getItem('emergencyContacts');
     return saved ? JSON.parse(saved) : [
-      { id: 1, name: 'Dr. Smith', phone: '555-0123', relationship: 'Primary Doctor' },
-      { id: 2, name: 'Family Member', phone: '555-0456', relationship: 'Son/Daughter' }
+      { id: 1, name: 'Dr. Sharma', phone: '+91-98765-43210', relationship: 'Primary Doctor', email: 'dr.sharma@clinic.com' },
+      { id: 2, name: 'Family Member', phone: '+91-98765-43211', relationship: 'Son/Daughter', email: 'family@example.com' },
+      { id: 3, name: 'Police Emergency', phone: '100', relationship: 'Emergency Services' },
+      { id: 4, name: 'Fire Emergency', phone: '101', relationship: 'Emergency Services' },
+      { id: 5, name: 'Ambulance', phone: '108', relationship: 'Emergency Services' }
     ];
   });
   const [alerts, setAlerts] = useState([]);
@@ -80,12 +97,20 @@ function App() {
     { id: 'emergency', label: 'Emergency', icon: '🚨' }
   ];
 
+  if (!user) {
+    return <LoginRegisterPage onAuth={handleAuth} />;
+  }
+
   return (
     <div className="app">
-      <header className="app-header">
+      <header className="app-header">                 
         <h1>Senior Care Assistant</h1>
         <div className="current-time">
           {format(new Date(), 'EEEE, MMMM do, yyyy - h:mm a')}
+        </div>
+        <div style={{marginTop:'0.75rem', display:'flex', gap:'0.75rem', justifyContent:'center', flexWrap:'wrap'}}>
+          <span style={{color:'#fff', fontSize:'0.9rem'}}>👤 {user.name}</span>
+          <button onClick={handleLogout} style={{background:'#e74c3c', color:'#fff', border:'none', padding:'0.5rem 1rem', borderRadius:'6px', cursor:'pointer', fontWeight:600}}>Logout</button>
         </div>
       </header>
       <nav className="tab-navigation">

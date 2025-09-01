@@ -86,7 +86,7 @@ const LoginRegisterPage = ({ onAuth }) => {
               <div className="logo" style={{ width:'4rem', height:'4rem', background:'linear-gradient(135deg,#a855f7,#3b82f6)', borderRadius:'1rem', margin:'0 auto 1rem', display:'flex', alignItems:'center', justifyContent:'center', transform:'rotate(12deg)', transition:'transform .3s ease', cursor:'pointer'}}>
                 <User style={{ width:'2rem', height:'2rem', color:'#fff'}} />
               </div>
-              <h1 style={{ fontSize:'1.875rem', fontWeight:'bold', color:'#fff', marginBottom:'.5rem'}}>{isLogin ? 'Welcome Back' : 'Create Account'}</h1>
+              <h1 style={{ fontSize:'1.875rem', fontWeight:'bold', color:'#fff', marginBottom:'.5rem'}}>{isLogin ? 'Welcome to Health Care App' : 'Create Account'}</h1>
               <p style={{ color:'#d1d5db'}}>{isLogin ? 'Sign in to your account' : 'Join us today'}</p>
             </div>
             <form onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column', gap:'1.25rem'}}>

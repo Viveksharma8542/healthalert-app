@@ -35,8 +35,6 @@ function App() {
   const [emergencyContacts, setEmergencyContacts] = useState(() => {
     const saved = localStorage.getItem('emergencyContacts');
     return saved ? JSON.parse(saved) : [
-      { id: 1, name: 'Dr. Sharma', phone: '+91-98765-43210', relationship: 'Primary Doctor', email: 'dr.sharma@clinic.com' },
-      { id: 2, name: 'Family Member', phone: '+91-98765-43211', relationship: 'Son/Daughter', email: 'family@example.com' },
       { id: 3, name: 'Police Emergency', phone: '100', relationship: 'Emergency Services' },
       { id: 4, name: 'Fire Emergency', phone: '101', relationship: 'Emergency Services' },
       { id: 5, name: 'Ambulance', phone: '108', relationship: 'Emergency Services' }

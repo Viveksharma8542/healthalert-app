@@ -95,7 +95,7 @@ const LoginRegisterPage = ({ onAuth }) => {
                   <label style={{ fontSize:'.875rem', fontWeight:500, color:'#d1d5db', marginBottom:'.5rem'}}>Full Name</label>
                   <div style={{ position:'relative'}}>
                     <User style={{ position:'absolute', left:'.75rem', top:'50%', transform:'translateY(-50%)', color:'#9ca3af', width:'1.25rem', height:'1.25rem'}} />
-                    <input className="input" name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your full name" required={!isLogin} style={inputStyle()} />
+                    <input className="input" type='text' pattern='[A-Za-z]' name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your full name" required={!isLogin} style={inputStyle()} />
                   </div>
                 </div>
               )}
@@ -124,11 +124,11 @@ const LoginRegisterPage = ({ onAuth }) => {
                   </div>
                 </div>
               )}
-              {isLogin && (
+              {/* {isLogin && (
                 <div style={{ textAlign:'right'}}>
                   <button type="button" className="forgot-link" style={{ fontSize:'.75rem', color:'#d8b4fe', background:'none', border:'none', cursor:'pointer', textDecoration:'underline'}}>Forgot password?</button>
                 </div>
-              )}
+              )} */}                   
               {error && <div className="auth-error">{error}</div>}
               <button type="submit" className="submit-btn" style={{ width:'100%', background:'linear-gradient(135deg,#a855f7,#2563eb)', color:'#fff', padding:'.75rem 1.5rem', borderRadius:'.75rem', fontWeight:600, border:'none', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:'.5rem', transition:'all .3s ease', boxShadow:'0 10px 25px -5px rgba(0,0,0,0.3)'}}>
                 <span>{isLogin ? 'Sign In' : 'Create Account'}</span>

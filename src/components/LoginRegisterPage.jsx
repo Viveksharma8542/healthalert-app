@@ -95,7 +95,7 @@ const LoginRegisterPage = ({ onAuth }) => {
                   <label style={{ fontSize:'.875rem', fontWeight:500, color:'#d1d5db', marginBottom:'.5rem'}}>Full Name</label>
                   <div style={{ position:'relative'}}>
                     <User style={{ position:'absolute', left:'.75rem', top:'50%', transform:'translateY(-50%)', color:'#9ca3af', width:'1.25rem', height:'1.25rem'}} />
-                    <input className="input" type='text' pattern='[A-Za-z]' name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your full name" required={!isLogin} style={inputStyle()} />
+                    <input className="input" type='text'  pattern="^[A-Za-z ]+$"  name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your full name" required={!isLogin} style={inputStyle()} />
                   </div>
                 </div>
               )}

@@ -63,7 +63,7 @@ const LoginRegisterPage = ({ onAuth }) => {
         @keyframes pulse { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.1); } }
         .pulse-1 { animation: pulse 4s ease-in-out infinite; }
         .pulse-2 { animation: pulse 4s ease-in-out infinite; animation-delay: 2s; }
-        .pulse-3 { animation: pulse 4s ease-in-out infinite; animation-delay: 1s; }
+        .pulse-3 { animation: pulse 4s ease-in-out infinite; animation-delay: 1s; }  
         .input::placeholder { color: #9ca3af; }
         .input:focus { box-shadow: 0 0 0 2px #a855f7; border-color: transparent; }
         .submit-btn:hover { background: linear-gradient(135deg, #9333ea, #1d4ed8) !important; transform: scale(1.05); box-shadow: 0 10px 25px -5px rgba(147,51,234,.25);} 

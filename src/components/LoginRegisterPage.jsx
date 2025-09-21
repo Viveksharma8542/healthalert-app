@@ -20,40 +20,28 @@ const LoginRegisterPage = ({ onAuth }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError('');
-    const stored = localStorage.getItem('appUser');
-    const savedUser = stored ? JSON.parse(stored) : null;
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  // ...validation...
 
-    if (isLogin) {
-      if (!savedUser) {
-        setError('No account found. Please create one.');
-        return;
-      }
-      if (savedUser.email !== formData.email || savedUser.password !== formData.password) {
-        setError('Invalid email or password');
-        return;
-      }
-      onAuth({ name: savedUser.name, email: savedUser.email });
+  const url = isLogin ? '/api/login' : '/api/register';
+  try {
+    const result = await fetch('http://localhost:5000' + url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    const data = await result.json();
+    if (result.ok) {
+      onAuth(data.user);
     } else {
-      if (!formData.name.trim()) {
-        setError('Name is required');
-        return;
-      }
-      if (formData.password.length < 6) {
-        setError('Password must be at least 6 characters');
-        return;
-      }
-      if (formData.password !== formData.confirmPassword) {
-        setError('Passwords do not match');
-        return;
-      }
-      const newUser = { name: formData.name.trim(), email: formData.email.trim(), password: formData.password };
-      localStorage.setItem('appUser', JSON.stringify(newUser));
-      onAuth({ name: newUser.name, email: newUser.email });
+      setError(data.error || "Failed");
     }
-  };
+  } catch (err) {
+    setError("Server error");
+  }
+};
+
 
   // styles object omitted (inline styles used directly below)
 
